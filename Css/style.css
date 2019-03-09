@@ -1,0 +1,10 @@
+.margin{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+.shadow{
+    box-shadow: 1px 3px 6px #eeeeee;
+}
+.center{
+    text-align: center;
+}
