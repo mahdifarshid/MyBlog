@@ -34,4 +34,9 @@ function getHash($str)
     $hash = sha1($saltStr . md5($str . $saltStr));
     return $hash;
 }
+
+function dologin(){
+
+}
+
 ?>
