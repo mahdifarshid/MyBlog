@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -75,10 +74,7 @@
             $countResult->bindParam(':title', $title);
             $countResult->bindParam(":description", $description);
             $countResult->execute();
-
-//          e($countResult->fetch(),"alert-info");
          $count =  $countResult->fetch()[0] ;
-
             if($count==0){
                     $result = $myPDO->prepare("INSERT INTO posts(Title, Description) VALUES (:title,:description)");
                     $result->bindParam(':title', $title);
@@ -86,17 +82,10 @@
                     if($result->execute()){
                         e("Successfuly insert data to Database $namedb", "alert-success");
                     }
-
-
             }
-
-
-
-
         } catch (PDOException $e) {
             e("Error: " . $e->getMessage(), "alert-danger");
         }
-
                 ?>
 
 

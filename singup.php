@@ -14,44 +14,52 @@
             margin: 0;
         }
     </style>
-
-    <title>Login</title>
+    <title>singup</title>
 </head>
 <body>
 <br>
 <center>
     <div class="container">
         <h1>ثبت نام</h1>
-        <div  class="card w-50 text-dark border-1  rounded">
+        <div class="card w-50 text-dark border-1  rounded">
             <div class="card-body">
 
-                <form action="session_login.php" method="post">
+                <form action="si.php" method="post">
                     <div class="form-group text-right">
                         <label for="exampleInputEmail1">نام کامل </label>
-                        <input type="text" placeholder="نام کامل" class="form-control text-right" name="fullname" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                        <input type="text" placeholder="نام کامل" class="form-control text-right"
+                               name="FullName"/>
 
                     </div>
                     <div class="form-group text-right">
                         <label for="exampleInputEmail1">ایمیل </label>
-                        <input type="text" placeholder="ایمیل" class="form-control text-right" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                        <input type="text" placeholder="ایمیل" class="form-control text-right"
+                               name="email"/>
 
                     </div>
                     <div class="form-group text-right">
                         <label for="exampleInputEmail1">نام کاربری </label>
-                        <input type="text" placeholder="نام کاربری" class="form-control text-right" name="username" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                        <input type="text" placeholder="نام کاربری" class="form-control text-right"
+                               name="username" id="exampleInputEmail1" required>
 
                     </div>
                     <div class="form-group text-right">
                         <label for="exampleInputPassword1">رمز عبور </label>
-                        <input type="password" placeholder="رمزعبور" class="form-control text-right " name="password" id="exampleInputPassword1">
+                        <input type="password" placeholder="رمزعبور"
+                               class="form-control text-right " name="password"
+                               id="exampleInputPassword1" required>
                     </div>
                     <div class="form-group text-right">
                         <label for="exampleInputPassword1">تکرار رمزعبور</label>
-                        <input type="password" placeholder="تکرار رمزعبور" class="form-control text-right " name="confirmpassword" id="exampleInputPassword1">
+                        <input type="password" placeholder="تکرار رمزعبور"
+                               class="form-control text-right " name="ConfirmPassword"
+                               id="exampleInputPassword1" required>
                     </div>
                     <a class="btn-link float-right" href="/">بازگشت به صفحه اصلی</a><br/>
 
-                    <center><button type="submit" class="btn btn-primary">ثبت نام</button></center>
+                    <center>
+                        <button type="submit" class="btn btn-primary">ثبت نام</button>
+                    </center>
                 </form>
             </div>
         </div>
