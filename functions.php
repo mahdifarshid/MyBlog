@@ -12,10 +12,10 @@ function e($text, $type = "alert-info")
 
 
 function getpost()
-{
-    global $host, $namedb, $username, $password;
-    require_once 'Panel/config.php';
-    $mypdo = new PDO("mysql:host=$host;dbname=$namedb", $username, $password);
+{   
+    global $host, $namedb, $username, $password,$mypdo;
+
+   // $mypdo = new PDO("mysql:host=$host;dbname=$namedb", $username, $password);
     $result = $mypdo->prepare("SELECT * From posts");
     $result->execute();
     echo "<br/><br/>";
@@ -40,21 +40,24 @@ function getHash($str)
 function getUser($username, $fields = '*')
 {
 
-    global $host,$namedb,$password,$username;
-    $db =new PDO('mysql:host='.$host.';dbname='.$namedb, $username, $password);
-    $statement = $db->prepare("SELECT $fields from users where username=?");
+    global $host,$namedb,$password,$username,$mypdo;
+	
+  //  $dbPDO = new PDO('mysql:host='.$host.';dbname='.$namedb, $username, $password);
+    $statement = $mypdo->prepare("SELECT $fields from users where username=?");
     $statement->execute(array($username));
-    $Blogger = $statement->fetch();
+    $Blogger = $statement->fetch(PDO::FETCH_ASSOC);
     if (count($Blogger) > 0) {
-        return $Blogger[0];
+        return $Blogger;
     }
     return false;
+	
+	return false;
 }
 
 function doLogin($username, $password)
 {
     $user = getUser($username);
-    if ($user and $username == $user['username'] and getHash($password) == $user['password']) {
+    if ($user && $username == $user['username'] && getHash($password) == $user['Password']) {
         $_SESSION['login'] = $username;
         $_SESSION['user'] = $user['display_name'];
         $_SESSION['email'] = $user['email'];

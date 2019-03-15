@@ -19,11 +19,23 @@ try {
             $Result->bindParam(':Email', $email);
             $Result->bindParam(':Password', getHash($password1));
             $Result->bindParam(':username', $username1);
-            $Result->execute();
-            echo $dbPDO->errorInfo();
-            e("اطلاعات شما با موفقیت ثبت شد", "alert-success");
+            if($Result->execute()){
+				echo 'submit';
+				// e("اطلاعات شما با موفقیت ثبت شد", "alert-success");
+			}
+			else{
+				$error= $Result->errorInfo();
+				echo $error[2];
+				echo 'error';
+				 //e(" خطای سمت سرور", "alert-danger");
+			}
+			echo $dbPDO->errorInfo();
+			
+           // echo $dbPDO->errorInfo();
+           
         } else {
-            e("رمز عبور و تکرار رمزعبور باهم برابر نمی باشد.", "alert-danger");
+				echo 'not match';
+        //    e("رمز عبور و تکرار رمزعبور باهم برابر نمی باشد.", "alert-danger");
         }
    }
 } catch (PDOException $e) {
