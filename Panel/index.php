@@ -28,6 +28,10 @@
             <a href="#" class="list-group-item list-group-item-action text-white bg-dark">Send
                 Post</a>
         </div>
+        <div class="list-group list-group-flush">
+            <a href="../logout.php" class="list-group-item list-group-item-action text-white bg-dark">Send
+                logout</a>
+        </div>
     </div>
     <!-- /#sidebar-wrapper -->
 
