@@ -17,6 +17,39 @@
     <title>singup</title>
 </head>
 <body>
+<?php
+$fullname = $_POST['fullname'];
+$email = $_POST['email'];
+$username1 = $_POST['username'];
+$password1 = $_POST['password'];
+$passwordconfirm = $_POST['confirmpassword'];
+include 'functions.php';
+require_once 'Panel/config.php';
+
+try {
+    $dbPDO = new PDO("mysql:host=$host;dbname=$namedb", $username, $password);
+    if ($_SERVER["REQUEST_METHOD"] == "post") {
+        if ($password1 == $passwordconfirm) {
+            getHash($password1);
+            $Result = $dbPDO->prepare("INSERT INTO users(FullName, Email, Password, username) VALUES (:FullName,:Email,:Password,:username)");
+            $Result->bindParam(':Fullname', $fullname);
+            $Result->bindParam(':Email', $email);
+            $Result->bindParam(':Password', $password1);
+            $Result->bindParam(':username', $username1);
+            $Result->execute();
+            e("اطلاعات شما با موفقیت ثبت شد", "alert-success");
+        } else {
+            e("رمز عبور و تکرار رمزعبور باهم برابر نمی باشد.", "alert-danger");
+        }
+    }
+} catch (PDOException $e) {
+//    e($e, "alert-danger");
+    echo $e;
+}
+
+
+?>
+
 <br>
 <center>
     <div class="container">
@@ -24,11 +57,19 @@
         <div class="card w-50 text-dark border-1  rounded">
             <div class="card-body">
 
+<<<<<<< HEAD
                 <form action="si.php" method="post">
                     <div class="form-group text-right">
                         <label for="exampleInputEmail1">نام کامل </label>
                         <input type="text" placeholder="نام کامل" class="form-control text-right"
                                name="FullName"/>
+=======
+                <form action="singup.php" method="post">
+                    <div class="form-group text-right">
+                        <label for="exampleInputEmail1">نام کامل </label>
+                        <input type="text" placeholder="نام کامل" class="form-control text-right"
+                               name="fullname"/>
+>>>>>>> b4d401384af72f71434e6101768adbe0ab2fe49c
 
                     </div>
                     <div class="form-group text-right">
@@ -52,7 +93,11 @@
                     <div class="form-group text-right">
                         <label for="exampleInputPassword1">تکرار رمزعبور</label>
                         <input type="password" placeholder="تکرار رمزعبور"
+<<<<<<< HEAD
                                class="form-control text-right " name="ConfirmPassword"
+=======
+                               class="form-control text-right " name="confirmpassword"
+>>>>>>> b4d401384af72f71434e6101768adbe0ab2fe49c
                                id="exampleInputPassword1" required>
                     </div>
                     <a class="btn-link float-right" href="/">بازگشت به صفحه اصلی</a><br/>
